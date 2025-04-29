@@ -1,7 +1,9 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 //RequireComponent can only have 3
 [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
+[RequireComponent(typeof(Collider2D))]
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,33 +20,39 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private new Collider2D collider;
     private Animator anim;
 
-    private Vector2 groundCheckPos => new Vector2(collider.bounds.min.x + collider.bounds.extents.x, collider.bounds.min.y);
+    GroundCheck groundCheck;
+
+    //private Vector2 groundCheckPos => new Vector2(collider.bounds.min.x + collider.bounds.extents.x, collider.bounds.min.y);
+    //private Transform groundCheckTransform;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collider = GetComponent<Collider2D>();
         anim = GetComponent<Animator>();
 
 
+        groundCheck = new GroundCheck(LayerMask.GetMask("Ground"), GetComponent<Collider2D>(), rb, ref groundCheckRadius);
+
+
         //Setting all "Ground" as a layermask
-        isGroundLayer = LayerMask.GetMask("Ground");
+        //isGroundLayer = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
     void Update()
     {
-        isGrounded = CheckIsGrounded();
+        //For animation stuff, gettinfo from base layer of animations, which we only have 0
+        AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
 
         float hInput = Input.GetAxis("Horizontal");
 
-        float attack = Input.GetAxis("Fire1");
+        groundCheck.CheckIsGrounded();
 
-
+      
 
         rb.linearVelocity = new Vector2(hInput * speed, rb.linearVelocity.y);
 
@@ -52,36 +60,21 @@ public class PlayerController : MonoBehaviour
         if (hInput != 0) spriteRenderer.flipX = (hInput < 0);
 
 
+        anim.SetBool("isWalking", checkIswalking());
+       
 
-        anim.SetBool("isGrounded", CheckIsGrounded());
-        anim.SetBool("isWalking", checkIsWalking());
+        anim.SetBool("isGrounded", groundCheck.IsGrounded);
 
 
-        if (Input.GetButtonDown("Jump") && isGrounded == true)
+        if (Input.GetButtonDown("Jump") && groundCheck.IsGrounded)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
 
-        //Checks if grounded and returns true or false
-        bool CheckIsGrounded()
-        {
-            //Checks if it's grounded, if false we enter
-            if (!isGrounded)
-            {
-                //if we're not jumping and touching ground, will return a true
-                if (rb.linearVelocityY <= 0)
-                {
-                    return Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, isGroundLayer);
-                }
 
-            }
-            //Will return a true if grounded
-            return isGrounded = Physics2D.OverlapCircle(groundCheckPos, groundCheckRadius, isGroundLayer);
-        }
-
-        //Checks if walking and returns true or false
-        bool checkIsWalking()
+        //Checks if "running" and returns true or false
+        bool checkIswalking()
         {
 
             if (Mathf.Abs(hInput) > 0)
@@ -95,5 +88,16 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+
+
+
+
     }
+
+
+
+
+
+
+
 }
