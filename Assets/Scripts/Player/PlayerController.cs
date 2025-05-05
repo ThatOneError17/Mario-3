@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
 
         float hInput = Input.GetAxis("Horizontal");
 
+        float run = Input.GetAxis("Fire3");
+
         groundCheck.CheckIsGrounded();
 
       
@@ -72,8 +74,20 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        if (checkIsRunning())
+        {
+            speed = 9f;
+            anim.SetBool("IsRunning", (checkIsRunning())); 
+        }
 
-        //Checks if "running" and returns true or false
+        else
+        {
+            speed = 6f;
+            anim.SetBool("IsRunning", (checkIsRunning()));
+        }
+
+
+        //Checks if walking and returns true or false
         bool checkIswalking()
         {
 
@@ -85,10 +99,23 @@ public class PlayerController : MonoBehaviour
             else
             {
                 return false;
-            }
+             }
 
         }
 
+        //Checks if Running and returns true or false
+        bool checkIsRunning()
+        {
+            if (run > 0f)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
 
 
 
