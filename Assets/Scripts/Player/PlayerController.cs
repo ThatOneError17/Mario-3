@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 //RequireComponent can only have 3
 [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
@@ -17,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadius = 0.02f;
     public LayerMask isGroundLayer;
     public bool isGrounded;
+    public float pSpeedTimeLimit = 0.5f;
+    public float pSpeed;
+    public float pSpeedTimer;
+    public float pSpeedTimerDecrement;
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -74,34 +80,132 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (checkIsRunning())
+        if (checkIsRunning() && checkIswalking())
         {
-            speed = 9f;
-            anim.SetBool("IsRunning", (checkIsRunning())); 
-        }
-
-        else
-        {
-            speed = 6f;
-            anim.SetBool("IsRunning", (checkIsRunning()));
-        }
-
-
-        //Checks if walking and returns true or false
-        bool checkIswalking()
-        {
-
-            if (Mathf.Abs(hInput) > 0)
+            if (pSpeed >= 4)
             {
-                return true;
+                anim.SetBool("pSpeed", true);
             }
 
             else
             {
-                return false;
-             }
+                anim.SetBool("pSpeed", false);
+            }
+            if (speed <= 11)
+            {
+                //If speed is less than 9, build up speed
+                if (speed < 9)
+                {
+                    speed += 0.1f;
+                }
+                anim.SetBool("IsRunning", (checkIsRunning()));
+                //If anim bool "isGrounded is true, will build up p momentum
+                if (anim.GetBool("isGrounded"))
+                {
+                    pSpeedTimer += Time.deltaTime;
+                }
+                //If speed is less than or equal to 8, and is grounded, and p speed timer is greater or equal to the pSpeedTime needed, will increase speed and pSpeed
+                if (speed >= 8 && anim.GetBool("isGrounded") && pSpeedTimer >= pSpeedTimeLimit)
+                {
+                    Debug.Log("Resetting Timer");
+                    pSpeedTimer = 0;
+                    //If pSpeed is less than or equal to 8, keep incrementing
+                    if (pSpeed <= 8)
+                    {
+                        Debug.Log("Gaining pSpeed");
+                        pSpeed += 1;
+                    }
+                    //If pSpeed is greater than 4, and Speed is less than 10, increase speed by 1
+                    if (pSpeed >= 4 && speed < 10)
+                    {
+                        speed += 1f;
+                    }
+
+                }
+            }
 
         }
+
+        
+
+       
+
+        else
+        {
+            //If speed is still greater than 6, but not running, decrement speed, but keep running animation
+            if (speed > 6f)
+            {
+                speed -= 0.1f;
+                
+                anim.SetBool("IsRunning", (checkIsRunning()));
+            }
+            //If not running, starts losing pSpeed momentum
+            if (pSpeedTimer > 0)
+            {
+                pSpeedTimer -= Time.deltaTime;
+            }
+            
+            
+            
+            if (pSpeed < 4)
+            {
+                anim.SetBool("pSpeed", false);
+            }
+
+        }
+        //If off ground starts decrementing pSpeed
+        if (anim.GetBool("isGrounded") == false)
+        {
+            pSpeedTimerDecrement += Time.deltaTime;
+            if (pSpeed >= 4)
+            {
+                
+                if (pSpeedTimerDecrement >= 4f && pSpeed > 0)
+                {
+                    pSpeedTimerDecrement = 0;
+                    pSpeed -= 1;
+                }
+            }
+
+            else
+            {
+                if (pSpeedTimerDecrement >= 1f && pSpeed > 0)
+                {
+                    pSpeedTimerDecrement = 0;
+                    pSpeed -= 1;
+                }
+            }
+        }
+
+        else
+        {
+            //If speed is less than 7, starts decrementing pSpeed
+            if (speed < 7 && pSpeed > 0)
+            {
+                pSpeedTimerDecrement += Time.deltaTime;
+                if (pSpeedTimerDecrement >= pSpeedTimeLimit)
+                {
+                    pSpeedTimerDecrement = 0;
+                    pSpeed -= 1;
+                }
+            }
+        }
+
+            //Checks if walking and returns true or false
+            bool checkIswalking()
+            {
+
+                if (Mathf.Abs(hInput) > 0)
+                {
+                    return true;
+                }
+
+                else
+                {
+                    return false;
+                }
+
+            }
 
         //Checks if Running and returns true or false
         bool checkIsRunning()
@@ -117,14 +221,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-
     }
-
-
-
-
-
-
 
 }
