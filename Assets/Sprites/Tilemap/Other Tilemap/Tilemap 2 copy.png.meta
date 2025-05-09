@@ -2127,7 +2127,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_79
+      name: Block
       rect:
         serializedVersion: 2
         x: 0
@@ -2149,7 +2149,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_80
+      name: BlockTouched
       rect:
         serializedVersion: 2
         x: 19
@@ -2171,7 +2171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_81
+      name: Brick1
       rect:
         serializedVersion: 2
         x: 0
@@ -2193,7 +2193,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_82
+      name: Brick2
       rect:
         serializedVersion: 2
         x: 19
@@ -2215,7 +2215,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_83
+      name: Brick3
       rect:
         serializedVersion: 2
         x: 38
@@ -2237,7 +2237,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_84
+      name: Brick4
       rect:
         serializedVersion: 2
         x: 57
@@ -2259,7 +2259,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_85
+      name: QuestionBlock1
       rect:
         serializedVersion: 2
         x: 0
@@ -2281,7 +2281,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_86
+      name: QuestionBlock2
       rect:
         serializedVersion: 2
         x: 19
@@ -2303,7 +2303,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_87
+      name: QuestionBlock3
       rect:
         serializedVersion: 2
         x: 38
@@ -2325,7 +2325,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_88
+      name: QuestionBlock4
       rect:
         serializedVersion: 2
         x: 57
@@ -2347,7 +2347,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap 2 copy_89
+      name: QuestionBlock empty
       rect:
         serializedVersion: 2
         x: 76
@@ -2448,11 +2448,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Block: 1576052666
+      BlockTouched: -520606503
+      Brick1: 180259111
+      Brick2: -1891670533
+      Brick3: -1814801961
+      Brick4: 1687673978
       Coin1: 9607081
       Coin2: 1637183364
       Coin3: 1206482472
       Coin4: -257356190
       Coin5: -399126624
+      QuestionBlock empty: -202762601
+      QuestionBlock1: -1796257194
+      QuestionBlock2: 703729610
+      QuestionBlock3: 1596222667
+      QuestionBlock4: -37096020
       Tilemap 2 copy_0: -1450312308617999083
       Tilemap 2 copy_1: 3314866517455884735
       Tilemap 2 copy_10: 2707652697599479464
@@ -2525,18 +2536,7 @@ TextureImporter:
       Tilemap 2 copy_76: 1647883176286591784
       Tilemap 2 copy_77: 4558567869461711719
       Tilemap 2 copy_78: -8471140969654635909
-      Tilemap 2 copy_79: 1576052666
       Tilemap 2 copy_8: 7542937702475361575
-      Tilemap 2 copy_80: -520606503
-      Tilemap 2 copy_81: 180259111
-      Tilemap 2 copy_82: -1891670533
-      Tilemap 2 copy_83: -1814801961
-      Tilemap 2 copy_84: 1687673978
-      Tilemap 2 copy_85: -1796257194
-      Tilemap 2 copy_86: 703729610
-      Tilemap 2 copy_87: 1596222667
-      Tilemap 2 copy_88: -37096020
-      Tilemap 2 copy_89: -202762601
       Tilemap 2 copy_9: -4032574604973141030
       Tilemap 2 copy_90: -1082907253
       Tilemap 2 copy_91: 725342745

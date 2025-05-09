@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
         groundCheck = new GroundCheck(LayerMask.GetMask("Ground"), GetComponent<Collider2D>(), rb, ref groundCheckRadius);
 
 
-        //Setting all "Ground" as a layermask
-        //isGroundLayer = LayerMask.GetMask("Ground");
+        //Setting all "Ground" as layermask
+        isGroundLayer = LayerMask.GetMask("Ground");
     }
 
     // Update is called once per frame
