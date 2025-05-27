@@ -21,6 +21,7 @@ public class PickUps : MonoBehaviour
             switch (type)
             {
                 case PickupType.Life:
+                    GameManager.Instance.Lives++;
                     break;
 
                 case PickupType.Mushroom:
@@ -30,6 +31,8 @@ public class PickUps : MonoBehaviour
                     break;
 
                 case PickupType.Coin:
+                    // Increment the player's coin count
+                    GameManager.Instance.Coins++;
                     break;
 
             }
