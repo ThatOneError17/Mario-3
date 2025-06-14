@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Objects
+  - Squish
+  - LevelBarrier
+  - Barrier
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,6 +45,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Above Title
+    uniqueID: 3014496759
     locked: 0
   m_RenderingLayers:
   - Default

@@ -203,7 +203,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy sprites_0
+      name: Goomba1
       rect:
         serializedVersion: 2
         x: 0
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_1
+      name: Goomba2
       rect:
         serializedVersion: 2
         x: 19
@@ -247,7 +247,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_2
+      name: Goomba Squish
       rect:
         serializedVersion: 2
         x: 38
@@ -269,7 +269,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_3
+      name: FlyingGoomba1
       rect:
         serializedVersion: 2
         x: 57
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_4
+      name: FlyingGoomba2
       rect:
         serializedVersion: 2
         x: 80
@@ -313,7 +313,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_5
+      name: FlyingGoombaFly1
       rect:
         serializedVersion: 2
         x: 103
@@ -335,7 +335,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_6
+      name: FlyingGoombaFly2
       rect:
         serializedVersion: 2
         x: 125
@@ -423,7 +423,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_10
+      name: BoomerangBroHolding1
       rect:
         serializedVersion: 2
         x: 0
@@ -445,7 +445,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_11
+      name: BoomerangBroHolding2
       rect:
         serializedVersion: 2
         x: 28
@@ -467,7 +467,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_12
+      name: BoomerangBroHolding
       rect:
         serializedVersion: 2
         x: 59
@@ -489,7 +489,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_13
+      name: BoomerangBro2
       rect:
         serializedVersion: 2
         x: 82
@@ -511,7 +511,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_14
+      name: RedKoopa1
       rect:
         serializedVersion: 2
         x: 105
@@ -533,7 +533,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_15
+      name: RedKoopa2
       rect:
         serializedVersion: 2
         x: 125
@@ -555,7 +555,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_16
+      name: RedKoopaShell1
       rect:
         serializedVersion: 2
         x: 146
@@ -577,7 +577,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_17
+      name: RedKoopaShell2
       rect:
         serializedVersion: 2
         x: 166
@@ -599,7 +599,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_18
+      name: GreenKoopa1
       rect:
         serializedVersion: 2
         x: 190
@@ -621,7 +621,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_19
+      name: GreenKoopa2
       rect:
         serializedVersion: 2
         x: 209
@@ -643,7 +643,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_20
+      name: GreenKoopaShell1
       rect:
         serializedVersion: 2
         x: 228
@@ -665,7 +665,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_21
+      name: GreenKoopaShell2
       rect:
         serializedVersion: 2
         x: 247
@@ -687,7 +687,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_22
+      name: Boomerang1
       rect:
         serializedVersion: 2
         x: 0
@@ -709,7 +709,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_23
+      name: Boomerang2
       rect:
         serializedVersion: 2
         x: 18
@@ -731,7 +731,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_24
+      name: Boomerang3
       rect:
         serializedVersion: 2
         x: 38
@@ -753,7 +753,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_25
+      name: Boomerang4
       rect:
         serializedVersion: 2
         x: 56
@@ -775,7 +775,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_26
+      name: Star
       rect:
         serializedVersion: 2
         x: 0
@@ -797,7 +797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_27
+      name: Flower
       rect:
         serializedVersion: 2
         x: 19
@@ -819,7 +819,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_28
+      name: Mushroom
       rect:
         serializedVersion: 2
         x: 38
@@ -841,7 +841,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_29
+      name: 1Up
       rect:
         serializedVersion: 2
         x: 57
@@ -863,7 +863,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy sprites_30
+      name: Leaf
       rect:
         serializedVersion: 2
         x: 76
@@ -898,37 +898,37 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Enemy sprites_0: 2145669337
-      Enemy sprites_1: 275335858
-      Enemy sprites_10: -106633272
-      Enemy sprites_11: -2041883762
-      Enemy sprites_12: -1299157350
-      Enemy sprites_13: -483387582
-      Enemy sprites_14: 1506270625
-      Enemy sprites_15: 219651367
-      Enemy sprites_16: 740872367
-      Enemy sprites_17: 889556680
-      Enemy sprites_18: 863352838
-      Enemy sprites_19: 1370914626
-      Enemy sprites_2: 1450132575
-      Enemy sprites_20: 410372554
-      Enemy sprites_21: 1793426559
-      Enemy sprites_22: -1865899246
-      Enemy sprites_23: -1541017026
-      Enemy sprites_24: -928307933
-      Enemy sprites_25: -980543093
-      Enemy sprites_26: -443988675
-      Enemy sprites_27: -2130748412
-      Enemy sprites_28: -544196769
-      Enemy sprites_29: -538942453
-      Enemy sprites_3: -1721155135
-      Enemy sprites_30: 1340694494
-      Enemy sprites_4: -1555775777
-      Enemy sprites_5: 1578443854
-      Enemy sprites_6: -1385033279
+      1Up: -538942453
+      Boomerang1: -1865899246
+      Boomerang2: -1541017026
+      Boomerang3: -928307933
+      Boomerang4: -980543093
+      BoomerangBro2: -483387582
+      BoomerangBroHolding: -1299157350
+      BoomerangBroHolding1: -106633272
+      BoomerangBroHolding2: -2041883762
       Enemy sprites_7: -1946991155
       Enemy sprites_8: -207027690
       Enemy sprites_9: -30996728
+      Flower: -2130748412
+      FlyingGoomba1: -1721155135
+      FlyingGoomba2: -1555775777
+      FlyingGoombaFly1: 1578443854
+      FlyingGoombaFly2: -1385033279
+      Goomba Squish: 1450132575
+      Goomba1: 2145669337
+      Goomba2: 275335858
+      GreenKoopa1: 863352838
+      GreenKoopa2: 1370914626
+      GreenKoopaShell1: 410372554
+      GreenKoopaShell2: 1793426559
+      Leaf: 1340694494
+      Mushroom: -544196769
+      RedKoopa1: 1506270625
+      RedKoopa2: 219651367
+      RedKoopaShell1: 740872367
+      RedKoopaShell2: 889556680
+      Star: -443988675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

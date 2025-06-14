@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
     public delegate PlayerController PlayerControllerDelegate(PlayerController playerInstance);
     public event PlayerControllerDelegate OnPlayerControllerCreated;
 
+    public static bool isPaused = false; //Will change if game is paused
+    public static bool endOfLevel = false;
+
     #region Singleton Pattern
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -98,7 +101,40 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            string loadedSceneName;
+
+            if (currentSceneName == "Game")
+            {
+
+                Debug.Log("Exiting to Title Scene");
+                // If we are in the Game scene, we exit to the Title scene
+                loadedSceneName = "Title";
+                SceneManager.LoadScene(loadedSceneName);
+
+            }
+        }
+
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            string loadedSceneName;
+
+            if (currentSceneName == "Title")
+            {
+                Debug.Log("Entering Game");
+                loadedSceneName = "Game";
+                GameManager.isPaused = false; //When changing scenes will make sure the game is no longer paused
+                GameManager.endOfLevel = false;
+                coins = 0;
+                Time.timeScale = 1; //Will also set timescale back to 1 
+
+                SceneManager.LoadScene(loadedSceneName);
+
+            }
+        }
     }
 
     public void InstantatePlayer(Vector3 spawnPos)

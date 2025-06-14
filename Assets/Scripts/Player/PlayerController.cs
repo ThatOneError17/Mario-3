@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static Enemy;
 
 //RequireComponent can only have 3
 [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
@@ -19,10 +20,11 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadius = 0.02f;
     public LayerMask isGroundLayer;
     public bool isGrounded;
-    public float pSpeedTimeLimit = 0.5f;
-    public float pSpeed;
-    public float pSpeedTimer;
-    public float pSpeedTimerDecrement;
+    private float pSpeedTimeLimit = 0.5f;
+    private float pSpeed;
+    private float pSpeedTimer;
+    private float pSpeedTimerDecrement;
+   
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -43,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
         groundCheck = new GroundCheck(LayerMask.GetMask("Ground"), GetComponent<Collider2D>(), rb, ref groundCheckRadius);
 
-
         //Setting all "Ground" as layermask
         isGroundLayer = LayerMask.GetMask("Ground");
     }
@@ -51,6 +52,20 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+        if (GameManager.isPaused)
+            return; //Should ignore all other update related functions if game is paused
+
+        if (GameManager.endOfLevel)
+        {
+            anim.SetBool("isWalking", false);
+            anim.SetBool("IsRunning", false);
+            anim.SetBool("pSpeed", false);
+            anim.SetBool("isGrounded", true);
+            return; //Should remove control if level is over
+        }
+
         //For animation stuff, gettinfo from base layer of animations, which we only have 0
         AnimatorClipInfo[] curPlayingClips = anim.GetCurrentAnimatorClipInfo(0);
 
@@ -124,6 +139,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+           
         }
 
         
@@ -191,8 +207,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-            //Checks if walking and returns true or false
-            bool checkIswalking()
+        //Checks if walking and returns true or false
+        bool checkIswalking()
             {
 
                 if (Mathf.Abs(hInput) > 0)
@@ -223,4 +239,17 @@ public class PlayerController : MonoBehaviour
 
     }
 
-}
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Squish") && rb.linearVelocityY < 0)
+            {
+                collision.enabled = false;
+                collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(1, DamageType.JumpedOn);
+                rb.linearVelocity = Vector2.zero;
+                rb.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+            }
+
+        }
+
+    }
