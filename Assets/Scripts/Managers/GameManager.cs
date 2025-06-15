@@ -7,11 +7,16 @@ public class GameManager : MonoBehaviour
     public event PlayerControllerDelegate OnPlayerControllerCreated;
 
     public static bool isPaused = false; //Will change if game is paused
-    public static bool endOfLevel = false;
+    public static bool endOfLevel = false; //Will chnage if end of level is reached
+
+    public CanvasManager cm; //Reference to the CanvasManager for UI handling
+    public PlayerController pc; //Reference to the PlayerController script
 
     #region Singleton Pattern
     private static GameManager _instance;
     public static GameManager Instance => _instance;
+
+    
 
     void Awake()
     {
@@ -36,6 +41,7 @@ public class GameManager : MonoBehaviour
     public int maxLives = 3;
     private int lives = 3;
     private int coins = 0;
+    private bool isBig = false;
     public int Coins
     {
         get 
@@ -126,8 +132,9 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Entering Game");
                 loadedSceneName = "Game";
-                GameManager.isPaused = false; //When changing scenes will make sure the game is no longer paused
-                GameManager.endOfLevel = false;
+                isPaused = false; //When changing scenes will make sure the game is no longer paused
+                endOfLevel = false;
+                pc.isBig = false; //Resetting the player size
                 coins = 0;
                 Time.timeScale = 1; //Will also set timescale back to 1 
 

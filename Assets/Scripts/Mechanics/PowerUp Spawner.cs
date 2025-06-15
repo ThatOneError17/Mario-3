@@ -4,16 +4,8 @@ public class PowerUpSpawner : MonoBehaviour
 {
     public GameObject[] PickUpPreFabs;
 
-    public void spawnPowerUp(bool Super)
+    public void spawnPowerUp()
     {
-        if (Super)
-        {
-            Instantiate(PickUpPreFabs[1], transform.position, transform.rotation);
-        }
-
-        else
-        {
-            Instantiate(PickUpPreFabs[0], transform.position, transform.rotation);
-        }
+       
     }
 }

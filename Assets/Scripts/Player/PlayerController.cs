@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     private float pSpeed;
     private float pSpeedTimer;
     private float pSpeedTimerDecrement;
-   
+    public bool isBig = false; //Will change if player is big or not, used for powerups
+
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;

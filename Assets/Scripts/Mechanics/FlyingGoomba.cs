@@ -1,11 +1,20 @@
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 
-public class Goomba : Enemy
+public class FlyingGoomba : Enemy
 {
-
     private Rigidbody2D rb;
     [SerializeField] private float xVel = 0;
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpInterval = 5f;
+    private float jumpTimer;
+    private float groundCheckRadius = 0.02f;
+    private LayerMask isGroundLayer;
+    private bool isGrounded;
+
+    GroundCheck groundCheck;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -15,6 +24,14 @@ public class Goomba : Enemy
         rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
 
         if (xVel <= 0) xVel = 2f;
+
+       
+
+        groundCheck = new GroundCheck(LayerMask.GetMask("Ground"), GetComponent<Collider2D>(), rb, ref groundCheckRadius);
+
+        //Setting all "Ground" as layermask
+        isGroundLayer = LayerMask.GetMask("Ground");
+
     }
 
     public override void TakeDamage(int damageValue, DamageType damageType = DamageType.Default)
@@ -54,13 +71,36 @@ public class Goomba : Enemy
         }
     }
 
-   
-
     // Update is called once per frame
     private void Update()
     {
+
+        groundCheck.CheckIsGrounded();
         if (sr.flipX) rb.linearVelocity = new Vector2(xVel, rb.linearVelocity.y);
         else rb.linearVelocity = new Vector2(-xVel, rb.linearVelocity.y);
+
+        jumpTimer += Time.deltaTime;
+
+        if (jumpTimer >= jumpInterval) // Jump Logic
+        {
+            //Debug.Log("FlyingGoomba is jumping");
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            jumpTimer = 0;
+        }
+
+
+        if (!groundCheck.IsGrounded)
+        {
+            //Debug.Log("FlyingGoomba is not grounded");
+            anim.SetBool("isGrounded", false);
+        }
+
+        else
+        {
+            //Debug.Log("FlyingGoomba is grounded");
+            anim.SetBool("isGrounded", true);
+        }
+
 
     }
 }

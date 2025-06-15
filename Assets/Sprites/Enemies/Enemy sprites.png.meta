@@ -467,7 +467,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoomerangBroHolding
+      name: BoomerangBro
       rect:
         serializedVersion: 2
         x: 59
@@ -903,8 +903,8 @@ TextureImporter:
       Boomerang2: -1541017026
       Boomerang3: -928307933
       Boomerang4: -980543093
+      BoomerangBro: -1299157350
       BoomerangBro2: -483387582
-      BoomerangBroHolding: -1299157350
       BoomerangBroHolding1: -106633272
       BoomerangBroHolding2: -2041883762
       Enemy sprites_7: -1946991155
