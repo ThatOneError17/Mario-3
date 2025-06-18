@@ -9,6 +9,8 @@ TagManager:
   - LevelBarrier
   - Barrier
   - Enemy
+  - BoomBarrier
+  - DeathZone
   layers:
   - Default
   - TransparentFX

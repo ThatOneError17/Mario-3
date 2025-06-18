@@ -35,7 +35,7 @@ public class GreenKoopa : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision) //For touching invisble walls
     {
-        if (collision.gameObject.CompareTag("LevelBarrier") || collision.gameObject.CompareTag("Squish"))
+        if (collision.gameObject.CompareTag("LevelBarrier") || collision.gameObject.CompareTag("Squish") || collision.gameObject.CompareTag("Barrier"))
         {
             sr.flipX = !sr.flipX;
         }
@@ -43,7 +43,7 @@ public class GreenKoopa : Enemy
 
     private void OnCollisionEnter2D(Collision2D collision) //For touching physical Objects
     {
-        if (collision.gameObject.CompareTag("Objects"))
+        if (collision.gameObject.CompareTag("Objects") || collision.gameObject.CompareTag("Enemy"))
         {
             sr.flipX = !sr.flipX;
         }

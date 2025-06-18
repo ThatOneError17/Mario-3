@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +10,16 @@ public class GameManager : MonoBehaviour
     public static bool isPaused = false; //Will change if game is paused
     public static bool endOfLevel = false; //Will chnage if end of level is reached
 
+    public event Action<int> OnLivesChanged;
+    public event Action<int> OnCoinsChanged;
+
     public CanvasManager cm; //Reference to the CanvasManager for UI handling
-    public PlayerController pc; //Reference to the PlayerController script
+    public PowerUpSpawner ps; //Reference to the PowerUpSpawner
 
     #region Singleton Pattern
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
-    
 
     void Awake()
     {
@@ -41,7 +44,6 @@ public class GameManager : MonoBehaviour
     public int maxLives = 3;
     private int lives = 3;
     private int coins = 0;
-    private bool isBig = false;
     public int Coins
     {
         get 
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
         {
             coins = value;
             Debug.Log("Coins have been set to: " + coins);
+            OnCoinsChanged?.Invoke(Coins);
 
             if (coins >= 100)
             {
@@ -77,14 +80,12 @@ public class GameManager : MonoBehaviour
         {
             if (value < 0)
             {
-               //GameOver();
+                GameOver();
                 return;
             }
-            if (lives > value)
-            {
-                Respawn();
-            }
+
             lives = value;
+            OnLivesChanged?.Invoke(lives);
             Debug.Log("Lives have been set to: " + lives);
         }
     }
@@ -101,13 +102,15 @@ public class GameManager : MonoBehaviour
             maxLives = 3; // Default value
         }
 
+        ps = GetComponent<PowerUpSpawner>();
+
         Lives = maxLives;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
             string loadedSceneName;
@@ -119,6 +122,7 @@ public class GameManager : MonoBehaviour
                 // If we are in the Game scene, we exit to the Title scene
                 loadedSceneName = "Title";
                 SceneManager.LoadScene(loadedSceneName);
+                lives = maxLives; // Reset lives to max when exiting to title
 
             }
         }
@@ -134,7 +138,6 @@ public class GameManager : MonoBehaviour
                 loadedSceneName = "Game";
                 isPaused = false; //When changing scenes will make sure the game is no longer paused
                 endOfLevel = false;
-                pc.isBig = false; //Resetting the player size
                 coins = 0;
                 Time.timeScale = 1; //Will also set timescale back to 1 
 
@@ -153,7 +156,19 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
-        playerInstance.transform.position = levelStart;
+        Lives--;
+        if (Lives >= 0)
+        {
+            endOfLevel = false; // Reset end of level state
+            playerInstance.transform.position = levelStart;
+        }
+    }
+
+    public void GameOver()
+    {
+
+        SceneManager.LoadScene("Title");
+        Lives = maxLives; // Reset lives to max on game over
     }
 }
 

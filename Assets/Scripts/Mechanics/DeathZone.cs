@@ -11,7 +11,6 @@ public class DeathZone : MonoBehaviour
 
         else
         {
-            GameManager.Instance.Lives--;
             GameManager.Instance.Respawn();
         }
     }

@@ -21,7 +21,15 @@ public class EndOfLevel : MonoBehaviour
 
             Destroy(gameObject);
             GameManager.endOfLevel = true;
-            
+
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+
+
         }
     }
 }

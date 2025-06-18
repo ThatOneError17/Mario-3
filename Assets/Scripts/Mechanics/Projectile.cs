@@ -47,18 +47,7 @@ public class Projectile : MonoBehaviour
     {
         // Check if the projectile collides with an object tagged as "Player"
         if (collision.CompareTag("Player"))
-        {
             Destroy(gameObject);
-
-            //if (pc.isBig)
-            //    pc.isBig = false;
-
-            //else
-            //{
-                GameManager.Instance.Lives--;
-                GameManager.Instance.Respawn();
-            //}
-        }
     }
 }
 

@@ -52,12 +52,7 @@ public class FlyingGoomba : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision) //For touching invisble walls
     {
-        if (collision.gameObject.CompareTag("LevelBarrier"))
-        {
-            sr.flipX = !sr.flipX;
-        }
-
-        if (collision.gameObject.CompareTag("Barrier"))
+        if (collision.gameObject.CompareTag("LevelBarrier") || collision.gameObject.CompareTag("Barrier") || collision.gameObject.CompareTag("Objects"))
         {
             sr.flipX = !sr.flipX;
         }

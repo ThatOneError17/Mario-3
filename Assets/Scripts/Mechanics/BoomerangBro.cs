@@ -73,7 +73,7 @@ public class BoomerangBro : Enemy
     private void OnTriggerEnter2D(Collider2D collision) //For touching invisble walls
     {
 
-        if (collision.gameObject.CompareTag("Barrier"))
+        if (collision.gameObject.CompareTag("BoomBarrier"))
         {
             if (moveDir == -1)
                 moveDir = 1; // Change direction to right
